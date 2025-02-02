@@ -24,3 +24,25 @@ export const evalAction = async (fileName: string): Promise<void> => {
         }
     }
 };
+
+export const jsonAction = async (fileName: string): Promise<void> => {
+    const services = createArithmeticsServices(NodeFileSystem).arithmetics;
+    const document = await extractDocument<Module>(fileName, ArithmeticsLanguageMetaData.fileExtensions, services);
+    const module = document.parseResult.value;
+
+    const generatedJSON = services.serializer.JsonSerializer.serialize(module, { space: 2});
+
+    console.log(chalk.green(generatedJSON));
+
+};
+
+/*
+export function generateJSON(program: Program): string {
+
+    const services = createEggServices(NodeFileSystem).Egg;
+
+    // invoke the serializer
+    const json = services.serializer.JsonSerializer.serialize(program, { space: 2})
+    return json;
+}
+*/

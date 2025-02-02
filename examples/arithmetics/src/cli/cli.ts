@@ -7,7 +7,7 @@
 import 'chalk';
 import { Command } from 'commander';
 import { ArithmeticsLanguageMetaData } from '../language-server/generated/module.js';
-import { evalAction } from './interpreter.js';
+import { evalAction, jsonAction } from './interpreter.js';
 import * as url from 'node:url';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
@@ -25,5 +25,11 @@ program
     .argument('<file>', `possible file extensions: ${ArithmeticsLanguageMetaData.fileExtensions.join(', ')}`)
     .description('calculates Evaluations in the source file')
     .action(evalAction);
+
+program
+    .command('json')
+    .argument('<file>', `possible file extensions: ${ArithmeticsLanguageMetaData.fileExtensions.join(', ')}`)
+    .description('Shows the AST in JSON format')
+    .action(jsonAction);
 
 program.parse(process.argv);
