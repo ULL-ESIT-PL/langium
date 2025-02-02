@@ -35,14 +35,3 @@ export const jsonAction = async (fileName: string): Promise<void> => {
     console.log(chalk.green(generatedJSON));
 
 };
-
-/*
-export function generateJSON(program: Program): string {
-
-    const services = createEggServices(NodeFileSystem).Egg;
-
-    // invoke the serializer
-    const json = services.serializer.JsonSerializer.serialize(program, { space: 2})
-    return json;
-}
-*/

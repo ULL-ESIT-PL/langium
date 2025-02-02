@@ -1,4 +1,4 @@
-Module basicMath
+Module Simple
 
 def a: 5;
 
